@@ -1,0 +1,30 @@
+{
+  "name": "csvparser-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "csvparser-api.js",
+  "private": true,
+  "scripts": {
+    "start": "node csvparser-api.js",
+    "dev": "nodemon csvparser-api.js",
+    "test": "jest",
+    "eslintest": "eslint --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "debug": "^4.1.1",
+    "express": "^4.16.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "eslint-config-airbnb": "^17.0.0",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-jest": "^21.27.2",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.10.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.6",
+    "supertest": "^3.3.0"
+  }
+}
