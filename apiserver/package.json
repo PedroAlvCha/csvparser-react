@@ -5,7 +5,7 @@
   "main": "csvparser-api.js",
   "private": true,
   "scripts": {
-    "start": "node csvparser-api.js",
+    "startapi": "node csvparser-api.js",
     "dev": "nodemon csvparser-api.js",
     "test": "jest",
     "eslintest": "eslint --ignore-path .gitignore ."

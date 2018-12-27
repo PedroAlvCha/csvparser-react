@@ -39,5 +39,5 @@ const getNotRouteValid = (req, res) => {
 
 module.exports = {
   getCsvParser,
-  getNotRouteValided,
+  getNotRouteValid,
 }

@@ -14,7 +14,7 @@ const server = app.listen(port, (err) => {
     Mydebbuger('Error at server creation: ', err);
     process.exit(1);
   } else {
-    Mydebbuger('server on listen port: ', port);
+    Mydebbuger('csvparser-api server listening port: ', port);
   }
 });
 
