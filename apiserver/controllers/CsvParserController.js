@@ -39,5 +39,7 @@ const getNotRouteValid = (req, res) => {
 
 module.exports = {
   getCsvParser,
+  getSearchResults,
   getNotRouteValid,
+  uploadCsvFile,
 }
