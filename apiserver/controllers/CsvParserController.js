@@ -21,15 +21,27 @@ const getCsvParser = (req, res) => {
 
 const uploadCsvFile = (req, res) => {
   Mydebbuger('Calling uploadCsvFile');
-  const myResponse = "Upload CSV file..."
+  let myResponse = "Upload CSV executed successfully";
   try {
-    /*fs.createReadStream('data.csv')
-      .pipe(csv())
-      .on('data', (data) => usersArray.push(data))
-      .on('end', () => {
-        console.log(usersArray);
-      });*/
-    res.status(404).send(myResponse);
+	let myString = JSON.stringify(req.body);
+    Mydebbuger('myString: ', myString);
+	const paramCsv = req.body.csvFile;
+	Mydebbuger('Csv Data received: ', paramCsv);
+	
+	if (typeof paramCsv === 'undefined'){
+	  myResponse = "Invalid File Attempt";
+	  Mydebbuger('paramCsv is undefined: ', paramCsv);	
+	  res.status(404).send(myResponse);
+	}else{
+	  Mydebbuger('paramCsv is NOT undefined: ', paramCsv);
+		fs.createReadStream(paramCsv)
+		  .pipe(csv())
+		  .on('data', (data) => usersArray.push(data))
+		  .on('end', () => {
+			console.log(usersArray);
+		  });
+       res.status(200).send(myResponse);
+	}
   } catch (e) {
     Mydebbuger('error obtained in the uploadCsvFile: ', e);
   }
@@ -42,6 +54,16 @@ const getSearchResults = (req, res) => {
     res.send(myResponse);
   } catch (e) {
     Mydebbuger('Error obtained in the getSearchResults: ', e);
+  }
+}
+
+const postNotRouteValid = (req, res) => {
+  Mydebbuger('Calling postNotRouteValid');
+  try {
+    const myResponse = "Invalid Route, does not Exist."
+    res.send(myResponse);
+  } catch (e) {
+    Mydebbuger('Error obtained in the postNotRouteValid: ', e);
   }
 }
 
@@ -60,4 +82,5 @@ module.exports = {
   getSearchResults,
   getNotRouteValid,
   uploadCsvFile,
+  postNotRouteValid,
 }

@@ -17,10 +17,10 @@ module.exports = (router) => {
     // routes
   try {
     router.get('/', csvParserController.getCsvParser);
-    router.post('/import ', csvParserController.uploadCsvFile);
+    router.post('/import', csvParserController.uploadCsvFile);
     router.post('/search', csvParserController.getSearchResults);
     router.get('*', csvParserController.getNotRouteValid);
-    router.post('*', csvParserController.getNotRouteValid); 
+    router.post('*', csvParserController.postNotRouteValid); 
   } catch (e) {
     Mydebbuger('Error in router route assignments: ', e);
   }
