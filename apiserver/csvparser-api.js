@@ -24,13 +24,13 @@ const server = app.listen(port, (err) => {
 Mydebbuger('Adding middlewares to our server');
 
 try{
-// midlewares
-app.use((req, res, next) => {
-  Mydebbuger('URL: ', req.url, '-', req.method);
-  next();
-});
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+  // midlewares
+  app.use((req, res, next) => {
+    Mydebbuger('App is in use, got called with this URL: ', req.url, ' and request method', req.method);
+    next();
+  });
+  app.use(bodyParser.json());
+  app.use(bodyParser.urlencoded({ extended: true }));
 } catch (e2) {
   Mydebbuger('Error adding middlewares for server creations: ', e2);
 }

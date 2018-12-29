@@ -10,8 +10,8 @@
     "concurrently": "4.1.0"
   },
   "scripts": {
-    "client": "cd client && npm start",
-    "server": "cd apiserver && node csvparser-api.js",
+    "client": "cd client && npm run start",
+    "server": "cd apiserver && npm  run startapi",
     "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\""
   }
 }

@@ -11,7 +11,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "pretest": "eslint --ignore-path .gitignore .",
+    "pretest": "eslint --ignore-path .eslintignore .",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
