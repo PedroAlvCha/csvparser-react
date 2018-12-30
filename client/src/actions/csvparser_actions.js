@@ -3,6 +3,7 @@ import * as contentAPIutil from '../utils/contentAPI.js';
 export const SEARCH_LIST_SET = 'SEARCH_LIST_SET'
 export const SEARCH_LIST_CHANGE_SORT_VARIABLE = 'SEARCH_LIST_CHANGE_SORT_VARIABLE'
 export const SEARCH_LIST_CHANGE_SORT_ASCDESC = 'SEARCH_LIST_CHANGE_SORT_ASCDESC';
+export const SELECTED_FILE_CHANGE = 'SELECTED_FILE_CHANGE';
 
 
 export function newCsvSubmitForImport(csvFile){
@@ -26,3 +27,7 @@ export function searchListChangeSort_Variable ( sortVariable ) {
     sortVariable,
   }
 };
+
+export function handleChangeSelectedFile( selectedFile){
+	
+}

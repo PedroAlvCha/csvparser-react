@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FileUploadInstance  from './FileUpload.js';
-import UserSearchInstance from './UserSearch.js';
+import { Route, withRouter } from 'react-router-dom';
+import NavBarInstance  from './NavigationHeader.js';
+import ListPostsComponent from './PostList.js';
 
 
 class App extends Component {
   render() {
+    const  categoryForMe  = this.props.match.params.category;
     return (
       <div >
         <Route render={() => (
@@ -16,16 +18,6 @@ class App extends Component {
             />
           </div>
         )}/>
-      </div>
-    );
-      <div className="App">
-		<div>
-		  <input type="file" name="uploadField" id="uploadField" onChange={this.handleselectedFile} />
-          <button id="uploadButton" onClick={this.handleUpload}>Upload</button>
-        </div>
-		<div>
-		  <input type="text" name="searchField" id="searchField" onChange={this.handleSearch} />
-        </div>
       </div>
     );
   }

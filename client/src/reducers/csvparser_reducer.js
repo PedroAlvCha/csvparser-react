@@ -2,6 +2,7 @@ import  {
           SEARCH_LIST_SET,
 		  SEARCH_LIST_CHANGE_SORT_VARIABLE,
 		  SEARCH_LIST_CHANGE_SORT_ASCDESC,
+		  SELECTED_FILE_CHANGE,
         } from '../actions/csvparser_actions.js'
 import _values from 'lodash.values';
 
@@ -10,11 +11,19 @@ const initialSearchListState = {
     searchListOrderBy: 'name',
     searchListOrderAscDesc: 'desc',
 	isUserDetailsModalOpen: false,
+	selectedFileForUpload: null,
+	isFileLoaded: 0,
 }
 
 export function csvParserManager (state = initialSearchListState, action) {
 
   switch (action.type) {
+    case SELECTED_FILE_CHANGE :
+      return {
+          ...state,
+          selectedFileForUpload:.target.files[0],
+	      isFileLoaded: 0,
+      }
     case SEARCH_LIST_CHANGE_SORT_VARIABLE :
       return {
           ...state,
