@@ -5,6 +5,7 @@ const csvParserController = require('../controllers/CsvParserController');
 module.exports = (router) => {
   try {
     router.use((req, res, next) => {
+	  Mydebbuger('Router is in use, got called with this URL: ', req.url, ' and request method', req.method);
       res.header('Access-Control-Allow-Origin', '*');
       res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
       next();
@@ -16,16 +17,11 @@ module.exports = (router) => {
     // routes
   try {
     router.get('/', csvParserController.getCsvParser);
-  } catch (e) {
-    Mydebbuger('Error adding GET routes: ', e);
-  }
-  
-  try {
-    router.post('/import ', csvParserController.uploadCsvFile);
+    router.post('/import', csvParserController.uploadCsvFile);
     router.post('/search', csvParserController.getSearchResults);
-    //router.get('*', csvParserController.getNotRouteValid);
-    //router.post('*', csvParserController.getNotRouteValid);
+    router.get('*', csvParserController.getNotRouteValid);
+    router.post('*', csvParserController.postNotRouteValid); 
   } catch (e) {
-    Mydebbuger('Error adding POST routes: ', e);
+    Mydebbuger('Error in router route assignments: ', e);
   }
 };
