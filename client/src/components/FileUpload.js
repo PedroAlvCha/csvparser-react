@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { Component } from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm, initialize } from 'redux-form';
-import { capitalize, renderField, validateRequired } from '../utils/helpers'
-import  { newPostFormSubmit, newPostModalClose  } from '../actions/post_actions.js';
-import {  Button  } from 'react-bootstrap';
+import { Field, reduxForm } from 'redux-form';
+import { newCsvSubmitForImport, handleChangeSelectedFile  } from '../actions/csvparser_actions.js';
+import {  Button } from 'react-bootstrap';
 
 class FileUploadComponent extends Component {
   state = {
@@ -17,16 +17,12 @@ class FileUploadComponent extends Component {
   }
 
   render(){
-    const { selectedFileForUpload,  isFileLoaded, value } = this.props
-
-
     return(
       <form onSubmit={this.props.handleSubmit(this.onSubmit)}>
         <div>
           <label>File Upload</label>
-		  <input type="file" name="uploadField" id="uploadField" onChange={this.handleSelectedFileChange} />
-          <button id="uploadButton" onClick={this.handleFileUploadAttempt}>Upload</button>
-          <Button onClick={newPostModalSetClosed}>Cancel</Button>
+		  <Field  id="uploadField" component="input" type="file" onChange={this.handleSelectedFileChange}/>
+          <Button id="uploadButton" onClick={this.handleFileUploadAttempt}>Upload</Button>
         </div>
       </form>
     )
@@ -35,15 +31,13 @@ class FileUploadComponent extends Component {
 
 function mapStateToProps (state, ownProps) {
   return {
-      selectedFileForUpload: state.csvParserManager.selectedFileForUpload,
-      isFileLoaded: state.csvParserManager.isFileLoaded,
   }
 };
 
 function mapDispatchToProps (dispatch) {
   return {
         handleSelectedFileChange: (data)=>dispatch(handleChangeSelectedFile(data)),
-        handleFileUploadAttempt: data =>dispatch(handleFileUpload(data)),
+        handleFileUploadAttempt: data =>dispatch(newCsvSubmitForImport(data)),
   }
 };
 
@@ -55,5 +49,5 @@ FileUploadComponent = connect(
 
 // Decorate the form component
 export default reduxForm({
-  form: 'NewPost' // a unique name for this form
+  form: 'fileUploadForm' // a unique name for this form
 })(FileUploadComponent);

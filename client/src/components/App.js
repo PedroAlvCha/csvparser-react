@@ -1,24 +1,23 @@
 import React, { Component } from 'react';
+import './App.css';
 import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
-import NavBarInstance  from './NavigationHeader.js';
-import ListPostsComponent from './PostList.js';
+import FileUploadComponent  from './FileUpload.js';
+import UserSearchComponent from './UserSearch.js';
+import UserListComponent  from './UserList.js';
+import UserDetailComponent from './UserDetail.js';
 
 
 class App extends Component {
   render() {
-    const  categoryForMe  = this.props.match.params.category;
     return (
-      <div >
-        <Route render={() => (
-          <div >
-            <NavBarInstance />
-            <ListPostsComponent
-              categorySelected={categoryForMe}
-            />
-          </div>
-        )}/>
-      </div>
+
+			<div>
+			   HELLO WORLD
+				<FileUploadComponent />
+				<UserSearchComponent />
+				<UserListComponent />
+			</div>
+
     );
   }
 }
@@ -32,7 +31,8 @@ function mapDispatchToProps (dispatch) {
 }
 
 
-export default withRouter(connect(
+export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(App))
+)(App)
+

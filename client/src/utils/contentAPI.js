@@ -5,11 +5,6 @@ let token = localStorage.token
 if (!token)
   token = localStorage.token = Math.random().toString(36).substr(-8)
 
-const myHeaders = {
-  'Accept': 'application/json',
-  'Authorization': token
-}
-
 export const getSearchResults = (query) =>
   fetch(`${api}/search`, {
         method: 'POST',
