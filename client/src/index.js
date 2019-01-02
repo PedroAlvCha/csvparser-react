@@ -7,8 +7,6 @@ import registerServiceWorker from './serviceWorker';
 import makeStore from './store/store.js';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-require('dotenv').config()
-
 export const store = makeStore();
 
 ReactDOM.render(  
@@ -23,13 +21,3 @@ ReactDOM.render(
 );
 
 registerServiceWorker();
-
-/*<App />
-  <Provider store={store}>
-    <BrowserRouter>
-      <Switch>
-	    <Route key="no-category" path="/" component={App} />
-      </Switch>
-    </BrowserRouter>
-  </Provider>
-  */

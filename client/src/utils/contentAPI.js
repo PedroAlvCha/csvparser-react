@@ -1,30 +1,23 @@
 const api = process.env.CSVPARSER_API_URL || 'http://localhost:9001'
 
-let token = localStorage.token
-
-if (!token)
-  token = localStorage.token = Math.random().toString(36).substr(-8)
-
 export const getSearchResults = (query) =>
-  fetch(`${api}/search`, {
+    fetch(`${api}/search`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Authorization': token,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
         body: JSON.stringify(query)
-  }).then(res => res.json())
-    .then(data => data)
+    }).then(res => res.json())
+      .then(data => data)
 
 export const uploadCsvFile = (csvFile) =>
-  fetch(`${api}/import`, {
+    fetch(`${api}/import`, {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
-          'Authorization': token,
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify(csvFile)
+        body: JSON.stringify(csvFile),
       }).then(res => res.json())
         .then(data => data)

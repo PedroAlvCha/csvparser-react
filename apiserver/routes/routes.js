@@ -6,8 +6,6 @@ module.exports = (router) => {
   try {
     router.use((req, res, next) => {
 	  Mydebbuger('Router is in use, got called with this URL: ', req.url, ' and request method', req.method);
-      res.header('Access-Control-Allow-Origin', '*');
-      res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
       next();
     });
   } catch (e) {
